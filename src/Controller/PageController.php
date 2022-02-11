@@ -20,6 +20,7 @@ class PageController {
 
     public function getHomePage() {
         try {
+            $this->twig->addGlobal('session', $_SESSION);
             echo $this->twig->render('home.html.twig');
         } catch (LoaderError $e) {
         } catch (RuntimeError $e) {
@@ -29,6 +30,7 @@ class PageController {
 
     public function getAboutPage() {
         try {
+            $this->twig->addGlobal('session', $_SESSION);
             echo $this->twig->render('about.html.twig');
         } catch (LoaderError $e) {
         } catch (RuntimeError $e) {
@@ -38,6 +40,7 @@ class PageController {
 
     public function getArticlePage() {
         try {
+            $this->twig->addGlobal('session', $_SESSION);
             echo $this->twig->render('article.html.twig');
         } catch (LoaderError $e) {
         } catch (RuntimeError $e) {
@@ -47,6 +50,7 @@ class PageController {
 
     public function getContactPage() {
         try {
+            $this->twig->addGlobal('session', $_SESSION);
             echo $this->twig->render('contact.html.twig');
         } catch (LoaderError $e) {
         } catch (RuntimeError $e) {
@@ -56,7 +60,48 @@ class PageController {
 
     public function getConnexionPage() {
         try {
+            $this->twig->addGlobal('session', $_SESSION);
             echo $this->twig->render('connexion.html.twig');
+        } catch (LoaderError $e) {
+        } catch (RuntimeError $e) {
+        } catch (SyntaxError $e) {
+        }
+    }
+
+    public function getCreateAccountPage() {
+        try {
+            $this->twig->addGlobal('session', $_SESSION);
+            echo $this->twig->render('createAccount.html.twig');
+        } catch (LoaderError $e) {
+        } catch (RuntimeError $e) {
+        } catch (SyntaxError $e) {
+        }
+    }
+
+    public function getCvPage() {
+        try {
+            $this->twig->addGlobal('session', $_SESSION);
+            echo $this->twig->render('cv.html.twig');
+        } catch (LoaderError $e) {
+        } catch (RuntimeError $e) {
+        } catch (SyntaxError $e) {
+        }
+    }
+
+    public function getAdminPage() {
+        try {
+            $this->twig->addGlobal('session', $_SESSION);
+            echo $this->twig->render('admin.html.twig');
+        } catch (LoaderError $e) {
+        } catch (RuntimeError $e) {
+        } catch (SyntaxError $e) {
+        }
+    }
+
+    public function getCreateArticlePage() {
+        try {
+            $this->twig->addGlobal('session', $_SESSION);
+            echo $this->twig->render('createArticle.html.twig');
         } catch (LoaderError $e) {
         } catch (RuntimeError $e) {
         } catch (SyntaxError $e) {
@@ -65,6 +110,7 @@ class PageController {
 
     public function getErrorPage() {
         try {
+            $this->twig->addGlobal('session', $_SESSION);
             echo $this->twig->render('error.html.twig');
         } catch (LoaderError $e) {
         } catch (RuntimeError $e) {

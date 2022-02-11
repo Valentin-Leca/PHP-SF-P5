@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('public/assets/img/admin-bg.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Administration</h1>
+                    <span class="subheading">Bienvenue sur le panneau d'administration</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+    <!-- Main Content-->
+    <main class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="my-5">
+                        <div class="text-center my-5">
+                            <a class="btn btn-primary mb-3 text-uppercase " href="index.php?createArticlePage">Créer un article</a><br>
+                            <a class="btn btn-primary mb-3 text-uppercase " href="index.php?modificationArticle">Modifier un article</a><br>
+                            <a class="btn btn-primary text-uppercase " href="index.php?manageComment">Gestion des commentaires</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

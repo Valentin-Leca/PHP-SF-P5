@@ -15,6 +15,7 @@
         "phpmailer/phpmailer": "^6.5",
         "components/jquery": "^3.6",
         "twbs/bootstrap": "^5.1",
-        "twig/twig": "^3.3"
+        "twig/twig": "^3.3",
+      "ext-pdo": "*"
     }
 }
