@@ -36,6 +36,7 @@
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php?about">À propos</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php?article">Articles</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php?contact">Contact</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php?cv">Mon CV</a></li>
             </ul>
         </div>
     </div>
@@ -71,7 +72,14 @@
                             </span>
                         </a>
                     </li>
-                    <li><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php?connexion">Connexion</a></li>
+                    {% if session.login %}
+                    <li><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php?deconnexion">Déconnexion</a></li>
+                    {% else %}
+                        <li><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php?connexion">Connexion</a></li>
+                    {% endif %}
+                    {% if session.role == "2" %}
+                        <li><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php?admin">Administration</a></li>
+                    {% endif %}
                 </ul>
                 <div class="small text-center text-muted fst-italic">Copyright &copy; Portfolio Valentin Lecavelier Des Etangs
                     2021 - {{ "now" | date("Y", "Europe/Paris") }}

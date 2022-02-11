@@ -19,14 +19,14 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="my-5">
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                        <form id="connexionForm" method="post" action="index.php?loginUser">
                             <div class="form-floating">
-                                <input class="form-control" id="identifiant" type="text" placeholder="Entrez votre identifiant..." data-sb-validations="required" />
-                                <label for="identifiant">Identifiant</label>
+                                <input class="form-control" id="login" name="login" type="text" placeholder="Entrez votre identifiant..." data-sb-validations="required" />
+                                <label for="login">Identifiant</label>
                                 <div class="invalid-feedback" data-sb-feedback="name:required">Votre identifiant est requis.</div>
                             </div>
                             <div class="form-floating">
-                                <input class="form-control" id="password" type="password" placeholder="Entrez votre mot de passe..." data-sb-validations="required,password" />
+                                <input class="form-control" id="password" name="password" type="password" placeholder="Entrez votre mot de passe..." data-sb-validations="required,password" />
                                 <label for="password">Mot de passe</label>
                                 <div class="invalid-feedback" data-sb-feedback="email:required">Votre mot de passe est requis.</div>
                                 <div class="invalid-feedback" data-sb-feedback="email:email">Votre mot de passe n'est pas valide.</div>
@@ -37,14 +37,13 @@
                                     <div class="fw-bolder">Connexion réussie avec succès !</div>
                                 </div>
                             </div>
-                            <!-- Submit error message-->
-                            <!---->
-                            <!-- This is what your users will see when there is-->
-                            <!-- an error submitting the form-->
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Erreur de connexion!</div></div>
-                            <!-- Submit Button-->
-                            <button class="btn btn-primary text-uppercase disabled" id="submitButton" type="submit">Connexion</button>
+                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Erreur de connexion !</div></div>
+                            <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Connexion</button>
                         </form>
+                        <p class="text-center">Si vous n'avez pas de compte, veuillez cliquez ci-dessous pour en créer un</p>
+                        <div class="text-center my-5">
+                            <a class="btn btn-primary text-uppercase " href="index.php?account">Créer un compte</a>
+                        </div>
                     </div>
                 </div>
             </div>
