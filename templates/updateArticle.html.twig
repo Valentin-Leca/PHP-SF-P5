@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('public/assets/img/admin-bg.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <h1>Modifier un article
+                        </h1>
+                        <span class="subheading">C'est le bon endroit pour modifier d'éventuelles erreurs dans un article !</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content-->
+    <main class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    {% for data in dataOneArticle %}
+                    <div class="my-5">
+                        <form id="updateArticleForm" method="post" action="index.php?updateArticle&id={{ data.article_id }}">
+                            <div class="form-floating">
+                                <input class="form-control" id="title" name="title" type="text" placeholder="Entrez votre titre..." data-sb-validations="required" />
+                                <label for="title">{{ data.titre }}</label>
+                                <div class="invalid-feedback" data-sb-feedback="title:required">Un titre est requis.</div>
+                            </div>
+                            <div class="form-floating">
+                            <textarea class="form-control" id="description" name="description" type="text" placeholder="Entrez votre texte..." data-sb-validations="required">{{ data.description }}</textarea>
+                                <label for="description">Contenue de l'article</label>
+                                <div class="invalid-feedback" data-sb-feedback="description:required">Un contenu est requis.</div>
+                            </div>
+                            <br />
+                            <div class="d-none" id="submitSuccessMessage">
+                                <div class="text-center mb-3">
+                                    <div class="fw-bolder">Article modifié avec succès !</div>
+                                </div>
+                            </div>
+                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Erreur lors de la modification de l'article !</div></div>
+                            <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Modifier mon article</button>
+                        </form>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

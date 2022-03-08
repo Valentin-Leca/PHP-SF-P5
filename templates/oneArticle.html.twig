@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('public/assets/img/post-bg.jpg')">
+    {% for data in dataOneArticle %}
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="post-heading text-center">
+                        <h1>{{ data.titre }}</h1>
+                        <span class="meta">
+                                Posté par
+                                <a href="index.php?about">{{ data.login }}</a>
+                                le {{ data.date_creation_fr }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Post Content-->
+    <article class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <p>{{ data.description }}</p>
+                </div>
+            </div>
+        </div>
+    </article>
+        <hr class="my-4" />
+        <h3 class="section-heading text-center">Commentaires</h3>
+        {% for dataComment in dataComments %}
+            {% if dataComment.status != "1" %}
+            <p class="text-center">{{ dataComment.commentaire }}</p>
+            <p class="text-center mb-0">Par : {{ dataComment.login }} le {{ dataComment.date_com }}</p><br/>
+            {% endif %}
+        {% endfor %}
+    {% if session.login %}
+        <main class="mb-4 text-center">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="my-5">
+                            <form id="createCommentForm" method="post" action="index.php?createComment&id={{ data.article_id }}">
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="commentaire" name="commentaire" type="text" placeholder="Entrez votre commentaire..." data-sb-validations="required"></textarea>
+                                    <label for="commentaire">Votre commentaire</label>
+                                    <div class="invalid-feedback" data-sb-feedback="description:required">Un commentaire est requis.</div>
+                                </div>
+                                <br />
+                                <div class="d-none" id="submitSuccessMessage">
+                                    <div class="text-center mb-3">
+                                        <div class="fw-bolder">Commentaire envoyé avec succès !</div>
+                                    </div>
+                                </div>
+                                <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Erreur de création du commentaire !</div></div>
+                                <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Envoyer mon commentaire</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        {% else %}
+        <p class="text-center">Pour laisser un commentaire, veuillez vous connecter !</p>
+    {% endif %}
+    {% endfor %}
+{% endblock content %}

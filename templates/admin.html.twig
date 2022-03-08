@@ -19,11 +19,17 @@
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
+                    {% if messageSystem is defined %}
+                        <p class="messageSystem text-center">{{ messageSystem }}</p>
+                    {% endif %}
+                    {% if errorSystem is defined %}
+                        <p class="errorSystem text-center">{{ errorSystem }}</p>
+                    {% endif %}
                     <div class="my-5">
                         <div class="text-center my-5">
-                            <a class="btn btn-primary mb-3 text-uppercase " href="index.php?createArticlePage">Créer un article</a><br>
-                            <a class="btn btn-primary mb-3 text-uppercase " href="index.php?modificationArticle">Modifier un article</a><br>
-                            <a class="btn btn-primary text-uppercase " href="index.php?manageComment">Gestion des commentaires</a>
+                            <a class="btn btn-primary mb-3 text-uppercase " href="index.php?createArticlePage">Création d'un article</a><br>
+                            <a class="btn btn-primary mb-3 text-uppercase " href="index.php?changeListArticlePage">Gestion des articles</a><br>
+                            <a class="btn btn-primary text-uppercase " href="index.php?changeCommentPage">Gestion des commentaires</a>
                         </div>
                     </div>
                 </div>

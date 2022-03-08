@@ -30,6 +30,8 @@ class Index {
                 $this->pageController->getAboutPage();
             } elseif (isset($_GET['article'])) {
                 $this->pageController->getArticlePage();
+            } elseif (isset($_GET['oneArticle'])) {
+                $this->pageController->getOneArticlePage();
             } elseif (isset($_GET['contact'])) {
                 $this->pageController->getContactPage();
             } elseif (isset($_GET['contactForm'])) {
@@ -46,6 +48,8 @@ class Index {
                 $this->pageController->getCreateAccountPage();
             } elseif (isset($_GET['createAccount'])) {
                 $this->userController->createUserAccount();
+            } elseif (isset($_GET['createComment'])) {
+                $this->userController->createComment();
             } if (isset($_SESSION['role'])) {
                 if ($_SESSION['role'] == "2") {
                  if (isset($_GET['admin'])) {
@@ -54,7 +58,21 @@ class Index {
                      $this->pageController->getCreateArticlePage();
                 } elseif (isset($_GET['createArticle'])) {
                      $this->userController->createArticle();
-                }
+                } elseif (isset($_GET['changeListArticlePage'])) {
+                     $this->pageController->getChangeListArticlePage();
+                } elseif (isset($_GET['updateArticlePage'])) {
+                     $this->pageController->getUpdateArticlePage();
+                } elseif (isset($_GET['updateArticle'])) {
+                     $this->userController->updateArticle();
+                } elseif (isset($_GET['deleteArticle'])) {
+                     $this->userController->deleteArticle();
+                } elseif (isset($_GET['changeCommentPage'])) {
+                     $this->pageController->getChangeListCommentPage();
+                } elseif (isset($_GET['updateComment'])) {
+                     $this->userController->updateComment();
+                } elseif (isset($_GET['deleteComment'])) {
+                     $this->userController->deleteComment();
+                 }
               }
             }
 //            else {

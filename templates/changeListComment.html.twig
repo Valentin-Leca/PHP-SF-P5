@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('public/assets/img/admin-bg.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="post-heading text-center">
+                        <h1>Gestion des articles !</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Post Content-->
+    <article class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!-- Post preview-->
+                    {% for dataAllComment in dataAllComments %}
+                        <div class="post-preview">
+                            <a href="index.php?oneArticle&id={{ dataAllComment.article_id }}">
+                                <h3 class="post-subtitle">{{ dataAllComment.commentaire | striptags | slice(0, 80) }} ...</h3>
+                            </a>
+                            <div class="clearfix">
+                                {% if dataAllComment.status == "1" %}
+                                <a class="btn btn-primary float-left" href="index.php?updateComment&id={{ dataAllComment.id }}">Accepter le commentaire</a>
+                                {% endif %}
+                                <button class="btn btn-primary delete float-left">Supprimer le commentaire</button>
+                                <a class="btn btn-primary delete-confirm float-left" href="index.php?deleteComment&id={{ dataAllComment.id }}">Confirmer la Suppression ?</a>
+                            </div>
+                        </div>
+                        <!-- Divider-->
+                        <hr class="my-4" />
+                    {% endfor %}
+                    <!-- Pager-->
+                </div>
+            </div>
+        </div>
+    </article>
+{% endblock content %}

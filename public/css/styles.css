@@ -11125,6 +11125,30 @@ footer {
   text-align: center;
 }
 
+.delete, .delete-confirm, .report {
+  background-color: #ff0000;
+  border-color: #ff0000;
+}
+
+.delete:hover, .delete:focus, .delete:active, .delete-confirm:hover, .delete-confirm:focus,
+.delete-confirm:active, .report:hover, .report:focus, .report:active {
+  color: #fff;
+  background-color: #cf0300 !important;
+  border-color: #cf0300 !important;
+}
+
+.delete-confirm {
+  display: none;
+}
+
+.errorSystem {
+  color: red;
+}
+
+.messageSystem {
+  color: green;
+}
+
 header.masthead {
   position: relative;
   margin-bottom: 3rem;

@@ -18,6 +18,12 @@
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
+                    {% if messageSystem is defined %}
+                        <p class="errorSystem">{{ messageSystem }}</p>
+                    {% endif %}
+                    {% if accountCreateMessage is defined %}
+                        <p class="messageSystem">{{ accountCreateMessage }}</p>
+                    {% endif %}
                     <div class="my-5">
                         <form id="connexionForm" method="post" action="index.php?loginUser">
                             <div class="form-floating">

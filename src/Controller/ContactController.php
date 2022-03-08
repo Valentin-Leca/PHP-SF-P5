@@ -47,8 +47,10 @@ class ContactController {
         ";
 
             mail($to, $subject, $mailContent, implode("\r\n", $headers));
+            $messageSystem = "Votre demande de contact a bien été envoyé.";
             try {
-                echo $this->twig->render('home.html.twig');
+                echo $this->twig->render('contact.html.twig',
+                    ['messageSystem' => $messageSystem]);
             } catch (LoaderError $e) {
             } catch (RuntimeError $e) {
             } catch (SyntaxError $e) {
@@ -63,8 +65,6 @@ class ContactController {
             }
 
         }
-
-
     }
 
 }
