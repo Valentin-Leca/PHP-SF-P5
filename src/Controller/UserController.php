@@ -24,16 +24,27 @@ class UserController {
     public function connectUserAccount() {
         $data = $this->user->connectAccount($_POST['login']);
 
-        $passwordVerify = password_verify($_POST['password'], $data['password']);
+        if ($data != null) {
+            $passwordVerify = password_verify($_POST['password'], $data['password']);
 
-        if ($passwordVerify === true) {
+            if ($passwordVerify === true) {
 
-            $_SESSION['login'] = $data['login'];
-            $_SESSION['role'] = $data['role'];
-            $_SESSION['id'] = $data['id'];
+                $_SESSION['login'] = $data['login'];
+                $_SESSION['role'] = $data['role'];
+                $_SESSION['id'] = $data['id'];
 
-            header('Location: index.php?home');
-        } elseif ($passwordVerify === false) {
+                header('Location: index.php?home');
+            } elseif ($passwordVerify === false) {
+                $messageSystem = "Mauvais identifiant ou mot de passe, veuillez réessayer.";
+                try {
+                    echo $this->twig->render('connexion.html.twig',
+                        ['messageSystem' => $messageSystem]);
+                } catch (LoaderError $e) {
+                } catch (RuntimeError $e) {
+                } catch (SyntaxError $e) {
+                }
+            }
+        } else {
             $messageSystem = "Mauvais identifiant ou mot de passe, veuillez réessayer.";
             try {
                 echo $this->twig->render('connexion.html.twig',
@@ -64,6 +75,32 @@ class UserController {
         } elseif ($password == $samePassword) {
             $passHash = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $this->user->dataCreateAccount($_POST['nom'], $_POST['prenom'], $_POST['login'], $_POST['email'], $passHash);
+
+            $name = $_POST['nom'];
+            $firstName = $_POST['prenom'];
+            $email = $_POST['email'];
+
+                $headers[] = 'MIME-Version: 1.0';
+                $headers[] = 'Content-type: text/html; charset=utf-8';
+                $headers[] = "De : " . $email;
+
+                $to = "$email";
+                $subject = "Création de votre compte";
+                $mailContent = "
+        <html lang=\"fr\">
+                        <body>
+                            <div align=\"center\">
+                                <p>Bonjour $firstName $name !</p><br />
+                                <p>Vous avez créé un compte sur le portfolio de Valentin Lecavelier Des Etangs</p>
+                                <p>Pour rappel, votre identifiant est : \" $loginForm \" et votre mot de passe est celui que vous avez enregistré lors de la création de votre compte.</p><br>
+                                <p>Si jamais vous ne vous en souvenez plus, n'hésitez pas à contacter l'administrateur du site.</p>                             
+                            </div>
+                        </body>
+                    </html>
+        ";
+
+                mail($to, $subject, $mailContent, implode("\r\n", $headers));
+
             $accountCreateMessage = "Votre compte a bien été créé. Vous pouvez maintenant vous connecter.";
             try {
                 echo $this->twig->render('connexion.html.twig',

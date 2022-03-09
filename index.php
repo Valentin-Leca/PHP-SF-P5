@@ -21,56 +21,56 @@ class Index {
         $this->contactController = new ContactController();
     }
 
-    public function router() {
+    public function router($get) {
 
         try {
-            if (isset($_GET['home'])) {
+            if (isset($get['home'])) {
                 $this->pageController->getHomePage();
-            } elseif (isset($_GET['about'])) {
+            } elseif (isset($get['about'])) {
                 $this->pageController->getAboutPage();
-            } elseif (isset($_GET['article'])) {
+            } elseif (isset($get['article'])) {
                 $this->pageController->getArticlePage();
-            } elseif (isset($_GET['oneArticle'])) {
+            } elseif (isset($get['oneArticle'])) {
                 $this->pageController->getOneArticlePage();
-            } elseif (isset($_GET['contact'])) {
+            } elseif (isset($get['contact'])) {
                 $this->pageController->getContactPage();
-            } elseif (isset($_GET['contactForm'])) {
+            } elseif (isset($get['contactForm'])) {
                 $this->contactController->getContactForm();
-            } elseif (isset($_GET['cv'])) {
+            } elseif (isset($get['cv'])) {
                 $this->pageController->getCvPage();
-            } elseif (isset($_GET['connexion'])) {
+            } elseif (isset($get['connexion'])) {
                 $this->pageController->getConnexionPage();
-            } elseif (isset($_GET['loginUser'])) {
+            } elseif (isset($get['loginUser'])) {
                 $this->userController->connectUserAccount();
-            } elseif (isset($_GET['deconnexion'])) {
+            } elseif (isset($get['deconnexion'])) {
                 $this->userController->disconnectUserAccount();
-            } elseif (isset($_GET['account'])) {
+            } elseif (isset($get['account'])) {
                 $this->pageController->getCreateAccountPage();
-            } elseif (isset($_GET['createAccount'])) {
+            } elseif (isset($get['createAccount'])) {
                 $this->userController->createUserAccount();
-            } elseif (isset($_GET['createComment'])) {
+            } elseif (isset($get['createComment'])) {
                 $this->userController->createComment();
             } if (isset($_SESSION['role'])) {
                 if ($_SESSION['role'] == "2") {
-                 if (isset($_GET['admin'])) {
+                 if (isset($get['admin'])) {
                     $this->pageController->getAdminPage();
-                } elseif (isset($_GET['createArticlePage'])) {
+                } elseif (isset($get['createArticlePage'])) {
                      $this->pageController->getCreateArticlePage();
-                } elseif (isset($_GET['createArticle'])) {
+                } elseif (isset($get['createArticle'])) {
                      $this->userController->createArticle();
-                } elseif (isset($_GET['changeListArticlePage'])) {
+                } elseif (isset($get['changeListArticlePage'])) {
                      $this->pageController->getChangeListArticlePage();
-                } elseif (isset($_GET['updateArticlePage'])) {
+                } elseif (isset($get['updateArticlePage'])) {
                      $this->pageController->getUpdateArticlePage();
-                } elseif (isset($_GET['updateArticle'])) {
+                } elseif (isset($get['updateArticle'])) {
                      $this->userController->updateArticle();
-                } elseif (isset($_GET['deleteArticle'])) {
+                } elseif (isset($get['deleteArticle'])) {
                      $this->userController->deleteArticle();
-                } elseif (isset($_GET['changeCommentPage'])) {
+                } elseif (isset($get['changeCommentPage'])) {
                      $this->pageController->getChangeListCommentPage();
-                } elseif (isset($_GET['updateComment'])) {
+                } elseif (isset($get['updateComment'])) {
                      $this->userController->updateComment();
-                } elseif (isset($_GET['deleteComment'])) {
+                } elseif (isset($get['deleteComment'])) {
                      $this->userController->deleteComment();
                  }
               }
@@ -86,4 +86,4 @@ class Index {
 }
 
 $index = new Index();
-$index->router();
+$index->router($_GET);
