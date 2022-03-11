@@ -24,11 +24,11 @@ class UserModel extends BddModel {
         $req->execute(array($nom, $prenom, $login, $email, $passHash));
     }
 
-    public function dataCreateArticle($title, $description, $id) {
+    public function dataCreateArticle($title, $description, $contenu, $id) {
         $time = date("Y-m-d");
         $db = $this->connectBdd();
-        $req = $db->prepare('INSERT INTO article VALUES(NULL, ?, ?, ?, ?)');
-        $req->execute(array($title, $description, $time, $id));
+        $req = $db->prepare('INSERT INTO article VALUES(NULL, ?, ?, ?, ?, ?)');
+        $req->execute(array($title, $description, $contenu, $time, $id));
     }
 
     public function getArticleHomePage() {

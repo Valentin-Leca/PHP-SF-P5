@@ -24,7 +24,7 @@ class UserController {
     public function connectUserAccount() {
         $data = $this->user->connectAccount($_POST['login']);
 
-        if ($data != null) {
+        if ($data !== null) {
             $passwordVerify = password_verify($_POST['password'], $data['password']);
 
             if ($passwordVerify === true) {
@@ -63,7 +63,7 @@ class UserController {
 
         $checkLogin = $this->user->compareLogin($loginForm);
 
-        if ($checkLogin == true) {
+        if ($checkLogin === true) {
             $messageSystem = "L'identifiant que vous avez choisi existe déjà. Veuillez en utiliser un autre.";
             try {
                 echo $this->twig->render('createAccount.html.twig',
@@ -121,7 +121,7 @@ class UserController {
 
     public function createArticle() {
         if (!empty($_POST['title']) && !empty($_POST['description'])) {
-            $this->user->dataCreateArticle($_POST['title'], $_POST['description'], $_SESSION['id']);
+            $this->user->dataCreateArticle($_POST['title'], $_POST['description'], $_POST['contenu'], $_SESSION['id']);
             $messageSystem = "Article créé avec succès !";
             try {
                 $this->twig->addGlobal('session', $_SESSION);
@@ -162,7 +162,6 @@ class UserController {
                 $this->twig->addGlobal('session', $_SESSION);
                 echo $this->twig->render('admin.html.twig',
                     ['errorSystem' => $errorSystem]);
-                die("toto");
             } catch (LoaderError $e) {
             } catch (RuntimeError $e) {
             } catch (SyntaxError $e) {
@@ -201,7 +200,6 @@ class UserController {
                 $this->twig->addGlobal('session', $_SESSION);
                 echo $this->twig->render('home.html.twig',
                     ['errorSystem' => $errorSystem]);
-                die("toto");
             } catch (LoaderError $e) {
             } catch (RuntimeError $e) {
             } catch (SyntaxError $e) {

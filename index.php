@@ -8,6 +8,9 @@ require 'vendor/autoload.php';
 use Valen\P5\Controller\PageController;
 use Valen\P5\Controller\UserController;
 use Valen\P5\Controller\ContactController;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 class Index {
 
@@ -21,7 +24,7 @@ class Index {
         $this->contactController = new ContactController();
     }
 
-    public function router($get) {
+    public function router($get, $session) {
 
         try {
             if (isset($get['home'])) {
@@ -50,8 +53,8 @@ class Index {
                 $this->userController->createUserAccount();
             } elseif (isset($get['createComment'])) {
                 $this->userController->createComment();
-            } if (isset($_SESSION['role'])) {
-                if ($_SESSION['role'] == "2") {
+            } if (isset($session['role'])) {
+                if ($session['role'] == "2") {
                  if (isset($get['admin'])) {
                     $this->pageController->getAdminPage();
                 } elseif (isset($get['createArticlePage'])) {
@@ -74,16 +77,14 @@ class Index {
                      $this->userController->deleteComment();
                  }
               }
+            } else {
+                $this->pageController->getErrorPage();
             }
-//            else {
-//                $this->pageController->getErrorPage();
-//            }
-        } catch (\Twig\Error\LoaderError $e) {
-        } catch (\Twig\Error\RuntimeError $e) {
-        } catch (\Twig\Error\SyntaxError $e) {
+        } catch (\Exception $e) {
+            echo 'Erreur :' . $e->getMessage();
         }
     }
 }
 
 $index = new Index();
-$index->router($_GET);
+$index->router($_GET, $_SESSION);
