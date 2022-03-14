@@ -1,6 +1,7 @@
 # PHP-SF-P5
 
-Description du besoin
+Description du besoin :
+
 Le projet est donc de développer votre blog professionnel. Ce site web se décompose en deux grands groupes de pages :
 
 les pages utiles à tous les visiteurs ;
