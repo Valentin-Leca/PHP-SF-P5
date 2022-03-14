@@ -36,7 +36,7 @@ un formulaire de contact (à la soumission de ce formulaire, un e-mail avec tout
 - message
 - un lien vers votre CV au format PDF
 - l’ensemble des liens vers les réseaux sociaux où l’on peut vous suivre (GitHub, LinkedIn, Twitter…).
-- 
+
 Sur la page listant tous les blogs posts (du plus récent au plus ancien), il faut afficher les informations suivantes pour chaque blog post :
 
 - le titre
