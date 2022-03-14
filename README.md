@@ -106,3 +106,15 @@ Afin de fluidifier votre avancement voici une proposition de manière de travail
 Étape 9 - Effectuez une démonstration de l’ensemble de l’application.
 
 Étape 10 - Préparez l’ensemble de vos livrables et soumettez-les sur la plateforme.
+
+GUIDE D'INSTALLATION :
+
+
+- Téléchargez les fichiers du projet.
+- Si vous n'avez pas composer, téléchargez le à cette adresse : https://getcomposer.org/
+- Allez à la racine de votre dossier ou vous avez téléchargez les fichiers, ouvrez un terminal et faites : "composer update" (cela va télécharger, installer et mettre à jour les dépendances utilisé pour le projet).
+- Importez le fichier blog.sql sur votre phpmyadmin
+- Lancez index.php sur votre navigateur
+
+Identifiants administrateur : Vleca
+Mot de passe administrateur : mdp
