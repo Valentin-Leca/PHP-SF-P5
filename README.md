@@ -116,5 +116,6 @@ GUIDE D'INSTALLATION :
 - Importez le fichier blog.sql sur votre phpmyadmin
 - Lancez index.php sur votre navigateur
 
-Identifiants administrateur : Vleca
-Mot de passe administrateur : mdp
+Identifiants administrateur : "Vleca"
+
+Mot de passe administrateur : "mdp"
