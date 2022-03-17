@@ -145,8 +145,8 @@ class UserController {
     }
 
     public function updateArticle() {
-        if (!empty($_POST['title']) && !empty($_POST['description'])) {
-            $this->user->dataUpdateArticle($_POST['title'], $_POST['description'], $_GET['id']);
+        if (!empty($_POST['titre']) && !empty($_POST['description'] && !empty($_POST['contenu']))) {
+            $this->user->dataUpdateArticle($_POST['titre'], $_POST['description'], $_POST['contenu'], $_GET['id']);
             $messageSystem = "Article modifié avec succès !";
             try {
                 $this->twig->addGlobal('session', $_SESSION);

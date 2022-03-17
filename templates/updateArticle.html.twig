@@ -24,13 +24,20 @@
                     <div class="my-5">
                         <form id="updateArticleForm" method="post" action="index.php?updateArticle&id={{ data.article_id }}">
                             <div class="form-floating">
-                                <input class="form-control" id="title" name="title" type="text" placeholder="Entrez votre titre..." data-sb-validations="required" />
-                                <label for="title">{{ data.titre }}</label>
+                                <input class="form-control" id="titre" name="titre" type="text" placeholder="Entrez votre titre..." data-sb-validations="required" />
+                                <label for="titre">{{ data.titre }}</label>
                                 <div class="invalid-feedback" data-sb-feedback="title:required">Un titre est requis.</div>
                             </div>
+                            <br />
                             <div class="form-floating">
-                            <textarea class="form-control" id="description" name="description" type="text" placeholder="Entrez votre texte..." data-sb-validations="required">{{ data.description }}</textarea>
-                                <label for="description">Contenue de l'article</label>
+                                <textarea class="form-control" id="description" name="description" type="text" placeholder="Entrez votre description..." data-sb-validations="required">{{ data.description }}</textarea>
+                                <label for="description">Description de l'article</label>
+                                <div class="invalid-feedback" data-sb-feedback="description:required">Une description est requise.</div>
+                            </div>
+                            <br />
+                            <div class="form-floating">
+                                <textarea class="form-control" id="contenu" name="contenu" type="text" placeholder="Entrez votre contenu..." data-sb-validations="required">{{ data.contenu }}</textarea>
+                                <label for="contenu">Contenu de l'article</label>
                                 <div class="invalid-feedback" data-sb-feedback="description:required">Un contenu est requis.</div>
                             </div>
                             <br />

@@ -55,10 +55,10 @@ class UserModel extends BddModel {
         return $req->fetchAll();
     }
 
-    public function dataUpdateArticle($title, $description, $id) {
+    public function dataUpdateArticle($title, $description, $contenu, $id) {
         $db = $this->connectBdd();
-        $req = $db->prepare('UPDATE article SET titre = ?, description = ? WHERE id = ?');
-        $req->execute(array($title, $description, $id));
+        $req = $db->prepare('UPDATE article SET titre = ?, description = ?, contenu = ? WHERE id = ?');
+        $req->execute(array($title, $description, $contenu, $id));
     }
 
     public function deleteArticle($id) {
