@@ -53,11 +53,9 @@ class Index {
                 $this->userController->createUserAccount();
             } elseif (isset($get['createComment'])) {
                 $this->userController->createComment();
-            } else {
+            } elseif (!isset($session['role']) || $session['role'] != 2) {
                 $this->pageController->getErrorPage();
-            }
-
-            if (isset($session['role'])) {
+            } elseif (isset($session['role'])) {
                 if ($session['role'] == "2") {
                  if (isset($get['admin'])) {
                     $this->pageController->getAdminPage();
@@ -79,7 +77,7 @@ class Index {
                      $this->userController->updateComment();
                 } elseif (isset($get['deleteComment'])) {
                      $this->userController->deleteComment();
-                } elseif ($session['role'] != 2) {
+                } else {
                      $this->pageController->getErrorPage();
                 }
               }

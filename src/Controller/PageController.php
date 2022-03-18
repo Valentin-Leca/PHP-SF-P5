@@ -58,14 +58,25 @@ class PageController {
     public function getOneArticlePage() {
         $dataOneArticle = $this->article->getOneArticle($_GET['id']);
         $dataComment = $this->article->getComment($_GET['id']);
-        try {
-            $this->twig->addGlobal('session', $_SESSION);
-            echo $this->twig->render('oneArticle.html.twig',
-                ['dataOneArticle' => $dataOneArticle,
-                 'dataComments' => $dataComment]);
-        } catch (LoaderError $e) {
-        } catch (RuntimeError $e) {
-        } catch (SyntaxError $e) {
+
+        if ($dataOneArticle->rowCount() === 1) {
+            try {
+                $this->twig->addGlobal('session', $_SESSION);
+                echo $this->twig->render('oneArticle.html.twig',
+                    ['dataOneArticle' => $dataOneArticle,
+                        'dataComments' => $dataComment]);
+            } catch (LoaderError $e) {
+            } catch (RuntimeError $e) {
+            } catch (SyntaxError $e) {
+            }
+        } else {
+            try {
+                $this->twig->addGlobal('session', $_SESSION);
+                echo $this->twig->render('error.html.twig');
+            } catch (LoaderError $e) {
+            } catch (RuntimeError $e) {
+            } catch (SyntaxError $e) {
+            }
         }
     }
 
